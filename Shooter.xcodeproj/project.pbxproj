@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FA6940DA23A5858E00E85906 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6940D923A5858E00E85906 /* AppDelegate.swift */; };
 		FA6940DC23A5858E00E85906 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA6940DB23A5858E00E85906 /* GameScene.sks */; };
-		FA6940DE23A5858E00E85906 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA6940DD23A5858E00E85906 /* Actions.sks */; };
 		FA6940E023A5858E00E85906 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6940DF23A5858E00E85906 /* GameScene.swift */; };
 		FA6940E223A5858E00E85906 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6940E123A5858E00E85906 /* GameViewController.swift */; };
 		FA6940E523A5858E00E85906 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6940E323A5858E00E85906 /* Main.storyboard */; };
@@ -17,6 +16,7 @@
 		FA6940EA23A5859000E85906 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6940E823A5859000E85906 /* LaunchScreen.storyboard */; };
 		FA6940F523A5859000E85906 /* ShooterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6940F423A5859000E85906 /* ShooterTests.swift */; };
 		FA69410023A5859000E85906 /* ShooterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6940FF23A5859000E85906 /* ShooterUITests.swift */; };
+		FA69410E23A5876100E85906 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA69410D23A5876100E85906 /* Starfield.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 		FA6940D623A5858E00E85906 /* Shooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6940D923A5858E00E85906 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA6940DB23A5858E00E85906 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		FA6940DD23A5858E00E85906 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		FA6940DF23A5858E00E85906 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		FA6940E123A5858E00E85906 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		FA6940E423A5858E00E85906 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		FA6940FB23A5859000E85906 /* ShooterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShooterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA6940FF23A5859000E85906 /* ShooterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShooterUITests.swift; sourceTree = "<group>"; };
 		FA69410123A5859000E85906 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA69410D23A5876100E85906 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,11 +105,11 @@
 			children = (
 				FA6940D923A5858E00E85906 /* AppDelegate.swift */,
 				FA6940DB23A5858E00E85906 /* GameScene.sks */,
-				FA6940DD23A5858E00E85906 /* Actions.sks */,
 				FA6940DF23A5858E00E85906 /* GameScene.swift */,
 				FA6940E123A5858E00E85906 /* GameViewController.swift */,
 				FA6940E323A5858E00E85906 /* Main.storyboard */,
 				FA6940E623A5859000E85906 /* Assets.xcassets */,
+				FA69410D23A5876100E85906 /* Starfield.sks */,
 				FA6940E823A5859000E85906 /* LaunchScreen.storyboard */,
 				FA6940EB23A5859000E85906 /* Info.plist */,
 			);
@@ -240,9 +240,9 @@
 			files = (
 				FA6940E523A5858E00E85906 /* Main.storyboard in Resources */,
 				FA6940DC23A5858E00E85906 /* GameScene.sks in Resources */,
+				FA69410E23A5876100E85906 /* Starfield.sks in Resources */,
 				FA6940E723A5859000E85906 /* Assets.xcassets in Resources */,
 				FA6940EA23A5859000E85906 /* LaunchScreen.storyboard in Resources */,
-				FA6940DE23A5858E00E85906 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,7 +451,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexlombry.Shooter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -468,7 +468,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexlombry.Shooter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
