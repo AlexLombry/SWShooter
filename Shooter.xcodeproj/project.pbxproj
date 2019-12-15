@@ -23,6 +23,7 @@
 		FA69411623A5AA0300E85906 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69411523A5AA0300E85906 /* Wave.swift */; };
 		FA69411823A5AA9600E85906 /* Bundle-Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69411723A5AA9600E85906 /* Bundle-Decoding.swift */; };
 		FA69411A23A5AC8900E85906 /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69411923A5AC8900E85906 /* EnemyNode.swift */; };
+		FA69411C23A5C41600E85906 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA69411B23A5C41600E85906 /* Explosion.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		FA69411523A5AA0300E85906 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		FA69411723A5AA9600E85906 /* Bundle-Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decoding.swift"; sourceTree = "<group>"; };
 		FA69411923A5AC8900E85906 /* EnemyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
+		FA69411B23A5C41600E85906 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				FA6940D923A5858E00E85906 /* AppDelegate.swift */,
 				FA6940DB23A5858E00E85906 /* GameScene.sks */,
 				FA6940DF23A5858E00E85906 /* GameScene.swift */,
+				FA69411B23A5C41600E85906 /* Explosion.sks */,
 				FA69411923A5AC8900E85906 /* EnemyNode.swift */,
 				FA69411323A5A9C600E85906 /* EnemyFile.swift */,
 				FA69411523A5AA0300E85906 /* Wave.swift */,
@@ -261,6 +264,7 @@
 				FA69411223A5A95F00E85906 /* waves.json in Resources */,
 				FA6940DC23A5858E00E85906 /* GameScene.sks in Resources */,
 				FA69410E23A5876100E85906 /* Starfield.sks in Resources */,
+				FA69411C23A5C41600E85906 /* Explosion.sks in Resources */,
 				FA6940E723A5859000E85906 /* Assets.xcassets in Resources */,
 				FA6940EA23A5859000E85906 /* LaunchScreen.storyboard in Resources */,
 			);

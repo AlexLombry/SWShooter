@@ -15,7 +15,7 @@ enum CollisionType: UInt32 {
     case enemyWeapon = 8
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let player = SKSpriteNode(imageNamed: "player")
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
@@ -24,11 +24,13 @@ class GameScene: SKScene {
     var isPlayerAlive = true
     var levelNumber = 0
     var waveNumber = 0
+    var playerShields = 10
     
     let positions = Array(stride(from: -320, through: 320, by: 80))
     
     override func didMove(to view: SKView) {
         physicsWorld.gravity = .zero
+        physicsWorld.contactDelegate = self
         // Create backgroup particules look like space
         if let particles = SKEmitterNode(fileNamed: "Starfield") {
             particles.position = CGPoint(x: 1068, y: 0)
@@ -38,7 +40,7 @@ class GameScene: SKScene {
         }
         
         // Make the player, start in middle left
-        player.name = "Player One"
+        player.name = "player"
         player.position.x = frame.minX + 75
         player.zPosition = 1
         addChild(player)
@@ -62,16 +64,25 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        for child in children {
-            if child.frame.maxX < 0 && !frame.intersects(child.frame) {
-                child.removeFromParent()
-            }
+        for child in children where child.frame.maxX < 0 && !frame.intersects(child.frame) {
+            child.removeFromParent()
         }
         
         let activeEnemies = children.compactMap { $0 as? EnemyNode }
         
         if activeEnemies.isEmpty {
             createWave()
+        }
+        
+        for enemy in activeEnemies {
+            guard frame.intersects(enemy.frame) else { continue }
+            if enemy.lastFireTime + 1 < currentTime {
+                enemy.lastFireTime = currentTime
+                // random fire
+                if Int.random(in: 0...3) == 0 {
+                    enemy.fire()
+                }
+            }
         }
     }
     
@@ -110,4 +121,87 @@ class GameScene: SKScene {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard isPlayerAlive else { return }
+        
+        let shot = SKSpriteNode(imageNamed: "playerWeapon")
+        shot.name = "playerWeapon"
+        shot.position = player.position
+        shot.physicsBody = SKPhysicsBody(rectangleOf: shot.size)
+        
+        shot.physicsBody?.categoryBitMask = CollisionType.playerWeapon.rawValue
+        shot.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
+        shot.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
+        
+        addChild(shot)
+        
+        let movement = SKAction.move(to: CGPoint(x: 1900, y: shot.position.y), duration: 5)
+        let sequence = SKAction.sequence([movement, .removeFromParent()])
+        shot.run(sequence)
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node else { return }
+        guard let nodeB = contact.bodyB.node else { return }
+        
+        // nodeB always the player
+        let sortedNodes = [nodeA, nodeB].sorted { $0.name ?? "" < $1.name ?? "" }
+        let firstNode = sortedNodes[0]
+        let secondNode = sortedNodes[1]
+        
+        if secondNode.name == "player" {
+            guard isPlayerAlive else { return }
+            if let explosion = SKEmitterNode(fileNamed: "Explosion") {
+                explosion.position = firstNode.position
+                addChild(explosion)
+            }
+            
+            playerShields -= 1
+            
+            if playerShields == 0 {
+                gameOver()
+                secondNode.removeFromParent()
+            }
+            
+            firstNode.removeFromParent()
+        } else if let enemy = firstNode as? EnemyNode {
+            enemy.shields -= 1
+            
+            if enemy.shields == 0 {
+                if let explosion = SKEmitterNode(fileNamed: "Explosion") {
+                    explosion.position = enemy.position
+                    addChild(explosion)
+                }
+                enemy.removeFromParent()
+            }
+            
+            if let explosion = SKEmitterNode(fileNamed: "Explosion") {
+                explosion.position = enemy.position
+                addChild(explosion)
+            }
+            
+            secondNode.removeFromParent()
+            
+        } else {
+            if let explosion = SKEmitterNode(fileNamed: "Explosion") {
+                explosion.position = secondNode.position
+                addChild(explosion)
+            }
+            
+            firstNode.removeFromParent()
+            secondNode.removeFromParent()
+        }
+    }
+    
+    func gameOver() {
+        isPlayerAlive = false
+        
+        if let explosion = SKEmitterNode(fileNamed: "Explosion") {
+            explosion.position = player.position
+            addChild(explosion)
+        }
+        
+        let gameOver = SKSpriteNode(imageNamed: "gameOver")
+        addChild(gameOver)
+    }
 }

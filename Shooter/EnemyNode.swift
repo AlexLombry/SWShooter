@@ -58,9 +58,9 @@ class EnemyNode: SKSpriteNode {
         weapon.name = "enemyWeapon"
         weapon.position = position
         weapon.zRotation = zRotation
+        parent?.addChild(weapon)
         
         weapon.physicsBody = SKPhysicsBody(rectangleOf: weapon.size)
-        
         weapon.physicsBody?.categoryBitMask = CollisionType.enemyWeapon.rawValue
         weapon.physicsBody?.collisionBitMask = CollisionType.player.rawValue
         weapon.physicsBody?.contactTestBitMask = CollisionType.player.rawValue
@@ -73,5 +73,7 @@ class EnemyNode: SKSpriteNode {
         let dy = speed * sin(adjustedRotation)
         
         weapon.physicsBody?.applyImpulse(CGVector(dx: dx, dy: dy))
+        
+        
     }
 }
