@@ -117,13 +117,12 @@
 		FA6940D823A5858E00E85906 /* Shooter */ = {
 			isa = PBXGroup;
 			children = (
+				FAC9D3A823A5D356006A7482 /* Structs */,
 				FA6940D923A5858E00E85906 /* AppDelegate.swift */,
 				FA6940DB23A5858E00E85906 /* GameScene.sks */,
 				FA6940DF23A5858E00E85906 /* GameScene.swift */,
 				FA69411B23A5C41600E85906 /* Explosion.sks */,
 				FA69411923A5AC8900E85906 /* EnemyNode.swift */,
-				FA69411323A5A9C600E85906 /* EnemyFile.swift */,
-				FA69411523A5AA0300E85906 /* Wave.swift */,
 				FA6940E123A5858E00E85906 /* GameViewController.swift */,
 				FA6940E323A5858E00E85906 /* Main.storyboard */,
 				FA6940E623A5859000E85906 /* Assets.xcassets */,
@@ -153,6 +152,15 @@
 				FA69410123A5859000E85906 /* Info.plist */,
 			);
 			path = ShooterUITests;
+			sourceTree = "<group>";
+		};
+		FAC9D3A823A5D356006A7482 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				FA69411323A5A9C600E85906 /* EnemyFile.swift */,
+				FA69411523A5AA0300E85906 /* Wave.swift */,
+			);
+			path = Structs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,7 +479,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BM9B63A7C8;
 				INFOPLIST_FILE = Shooter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,7 +498,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BM9B63A7C8;
 				INFOPLIST_FILE = Shooter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

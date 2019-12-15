@@ -6,6 +6,7 @@
 //  Copyright © 2019 Alex Lombry. All rights reserved.
 //
 
+import CoreMotion
 import SpriteKit
 
 enum CollisionType: UInt32 {
@@ -16,7 +17,7 @@ enum CollisionType: UInt32 {
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
+    let motionManager = CMMotionManager()
     let player = SKSpriteNode(imageNamed: "player")
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
     let enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
@@ -33,7 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         // Create backgroup particules look like space
         if let particles = SKEmitterNode(fileNamed: "Starfield") {
-            particles.position = CGPoint(x: 1068, y: 0)
+            particles.position = CGPoint(x: 1080, y: 0)
             particles.advanceSimulationTime(60)
             particles.zPosition = -1
             addChild(particles)
@@ -60,12 +61,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // What when collide (bounce around)
         player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
     
-    
+        
+        motionManager.startAccelerometerUpdates()
     }
     
     override func update(_ currentTime: TimeInterval) {
-        for child in children where child.frame.maxX < 0 && !frame.intersects(child.frame) {
-            child.removeFromParent()
+        // modify position of player
+        if let accelerometerData = motionManager.accelerometerData {
+            player.position.y += CGFloat(accelerometerData.acceleration.x * 30)
+            
+            // do not go of the screen
+            if player.position.y < frame.minY {
+                player.position.y = frame.minY
+            } else if player.position.y > frame.maxY {
+                player.position.y = frame.maxY
+            }
+        }
+        
+//        for child in children where child.frame.maxX < 0 && !frame.intersects(child.frame) {
+//            child.removeFromParent()
+//        }
+        
+        for child in children {
+            if child.frame.maxX < 0 {
+                if !frame.intersects(child.frame) {
+                    child.removeFromParent()
+                }
+            }
         }
         
         let activeEnemies = children.compactMap { $0 as? EnemyNode }
