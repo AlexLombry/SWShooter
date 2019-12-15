@@ -18,6 +18,8 @@ enum CollisionType: UInt32 {
 class GameScene: SKScene {
     
     let player = SKSpriteNode(imageNamed: "player")
+    let waves = Bundle.main.decode([Wave].self, from: "waves.json")
+    let enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
     
     override func didMove(to view: SKView) {
         // Create backgroup particules look like space
@@ -48,7 +50,9 @@ class GameScene: SKScene {
         
         // What when collide (bounce around)
         player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
-
-        
+    
+    
     }
+    
+    
 }

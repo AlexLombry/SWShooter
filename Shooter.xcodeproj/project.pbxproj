@@ -21,6 +21,8 @@
 		FA69411223A5A95F00E85906 /* waves.json in Resources */ = {isa = PBXBuildFile; fileRef = FA69411023A5A95F00E85906 /* waves.json */; };
 		FA69411423A5A9C600E85906 /* EnemyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69411323A5A9C600E85906 /* EnemyFile.swift */; };
 		FA69411623A5AA0300E85906 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69411523A5AA0300E85906 /* Wave.swift */; };
+		FA69411823A5AA9600E85906 /* Bundle-Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69411723A5AA9600E85906 /* Bundle-Decoding.swift */; };
+		FA69411A23A5AC8900E85906 /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69411923A5AC8900E85906 /* EnemyNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		FA69411023A5A95F00E85906 /* waves.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waves.json; sourceTree = "<group>"; };
 		FA69411323A5A9C600E85906 /* EnemyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyFile.swift; sourceTree = "<group>"; };
 		FA69411523A5AA0300E85906 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
+		FA69411723A5AA9600E85906 /* Bundle-Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decoding.swift"; sourceTree = "<group>"; };
+		FA69411923A5AC8900E85906 /* EnemyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 				FA6940D923A5858E00E85906 /* AppDelegate.swift */,
 				FA6940DB23A5858E00E85906 /* GameScene.sks */,
 				FA6940DF23A5858E00E85906 /* GameScene.swift */,
+				FA69411923A5AC8900E85906 /* EnemyNode.swift */,
 				FA69411323A5A9C600E85906 /* EnemyFile.swift */,
 				FA69411523A5AA0300E85906 /* Wave.swift */,
 				FA6940E123A5858E00E85906 /* GameViewController.swift */,
@@ -124,6 +129,7 @@
 				FA6940EB23A5859000E85906 /* Info.plist */,
 				FA69410F23A5A95F00E85906 /* enemy-types.json */,
 				FA69411023A5A95F00E85906 /* waves.json */,
+				FA69411723A5AA9600E85906 /* Bundle-Decoding.swift */,
 			);
 			path = Shooter;
 			sourceTree = "<group>";
@@ -281,6 +287,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA69411823A5AA9600E85906 /* Bundle-Decoding.swift in Sources */,
+				FA69411A23A5AC8900E85906 /* EnemyNode.swift in Sources */,
 				FA69411423A5A9C600E85906 /* EnemyFile.swift in Sources */,
 				FA69411623A5AA0300E85906 /* Wave.swift in Sources */,
 				FA6940E023A5858E00E85906 /* GameScene.swift in Sources */,
